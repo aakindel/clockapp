@@ -396,10 +396,3 @@ footer {
         width: 80%;
     }
 }
-
-/* FOUC FIX */
-
-html {
-    visibility: visible; 
-    opacity: 1;
-}

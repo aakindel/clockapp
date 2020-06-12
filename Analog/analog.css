@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +7,11 @@
     box-sizing: border-box; /* element width includes border & padding */
 }
 
-html {
+:root {
     --bg-pale-pink: hsla(0, 100%, 80%, 0.281);
     --logo-red: hsl(0, 100%, 66.7%);
     --logo-grey: hsl(0, 0%, 31.8%);
-    --clock-center-grey: hsl(0, 0%, 28.6%);
+    --clock-center-grey: hsl(0, 0%, 38.6%);
     --hour-hand-grey: hsl(0, 0%, 50.2%);
     --minute-hand-grey: hsl(0, 0%, 68.6%);
     --second-hand-red: hsl(0, 100%, 50%);
@@ -29,14 +31,15 @@ html {
     width: 100%;
 }
 
-/* HEADER BAR */
+/*  ================================================================================
+                            HEADER BAR (for full logo & tagline)
+    ================================================================================ */
 
 header {
-    /* background-color: rgba(0, 0, 0, 0.1); */
     grid-area: header;
     grid-row-start: 1;
     grid-row-end: 2;
-    z-index: 13;
+    z-index: 1;
 }
 
 .container.header {
@@ -48,24 +51,28 @@ header {
 
 /* LOGO IMAGE AND TEXT */
 
-.logo {
-    height: 60px; 
-    width: 60px;
-}
-
-.logo-box a {
+.logo-box {
     display: flex;
     align-items: center;
     text-decoration: none;
     text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: var(--logo-grey);
 }
 
-.logo-box a h1 {
+.logo-img {
+    height: 60px; 
+    width: 60px;
+}
+
+.logo-text { /* for 'CLOCK' text */
+    margin-top: 5px;
     padding-left: 3px;
 }
 
-.logo-box a span{
+.logo-text span { /* for 'APP' text */
+    padding-left: 2px;
+    letter-spacing: 0.02em;
     color: var(--logo-red);
 }
 
@@ -75,7 +82,10 @@ header {
     display: none;
 }
 
-/* CONTAINER for PAGE CONTENT */
+
+/*  ================================================================================
+                        CONTAINER for PAGE CONTENT BELOW HEADER
+    ================================================================================ */
 
 .container.content {
     grid-area: container-content;
@@ -88,49 +98,24 @@ header {
     align-items: center;
 }
 
-.clock {
-    background: rgba(255, 255, 255, 1.0);
-    height: 350px;
-    width: 350px;
-    border: 20px solid white;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 
-                      0 15px 20px rgba(0, 0, 0, 0.2), 
-                      0 0 0 4px rgba(255, 255, 255, 1.0);
-    border-radius: 50%;
-    position: relative;
-}
+/*  ================================================================================
+                    GENERAL CLOCK SETTINGS (stuff that shouldn't change)
+    ================================================================================ */
 
-/* CIRCLE IN CLOCK'S CENTER */
+/* PREPARES NUMBERS FOR POSITIONING ON CLOCK */
 
-.clock::after { /* ::after pseudo-element renders circle atop clock hands */
-    content: '';
-    background-color: var(--clock-center-grey);
-    border: 2px solid white;
-    height: 15px;
-    width: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-}
-
-/* NUMBERS ON THE CLOCK */
-
-.number {
+.num-box {
     --hour_rotation: 0;
-    position: absolute;
-    pointer-events: none; /* makes numbers (except 1 on double-click?) unselectable*/
+    position: absolute; /* within the relatively positioned clock */
+    pointer-events: none; /* makes numbers (except 1 on double-click?) unselectable */
+    margin-top: 3px; /* nudges numbers on clock towards center*/
     height: 100%;
     width: 100%;
     text-align: center;
-    padding: 15px;
     transform: rotate(calc(var(--hour_rotation) * 30deg));
 }
 
-.num {
-    transform: rotate(calc(var(--hour_rotation) * -30deg));
-}
+/* POSITIONS NUMBERS ON CLOCK */
 
 .hour1 { --hour_rotation: 1;}
 .hour2 { --hour_rotation: 2;}
@@ -145,7 +130,97 @@ header {
 .hour11 { --hour_rotation: 11;}
 .hour12 { --hour_rotation: 12;}
 
-/* CLOCK HANDS */
+.num { /* undoes rotation on numbers to position numbers upright on clock */
+    transform: rotate(calc(var(--hour_rotation) * -30deg));
+}
+
+/* PREPARES DASHES FOR POSITIONING ON CLOCK */
+
+.dash {
+    --sec_rotation: 0;
+    position: absolute; /* within the relatively positioned clock */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: rotate(calc(var(--sec_rotation) * 6deg));
+}
+
+/* POSITIONS DASHES ON CLOCK */
+
+.sd11 { --sec_rotation: 1; }
+.sd12 { --sec_rotation: 2; }
+.sd13 { --sec_rotation: 3; }
+.sd14 { --sec_rotation: 4; }
+.bd1 { --sec_rotation: 5; }
+
+.sd21 { --sec_rotation: 6; }
+.sd22 { --sec_rotation: 7; }
+.sd23 { --sec_rotation: 8; }
+.sd24 { --sec_rotation: 9; }
+.bd2 { --sec_rotation: 10; }
+
+.sd31 { --sec_rotation: 11; }
+.sd32 { --sec_rotation: 12; }
+.sd33 { --sec_rotation: 13; }
+.sd34 { --sec_rotation: 14; }
+.bd3 { --sec_rotation: 15; }
+
+.sd41 { --sec_rotation: 16; }
+.sd42 { --sec_rotation: 17; }
+.sd43 { --sec_rotation: 18; }
+.sd44 { --sec_rotation: 19; }
+.bd4 { --sec_rotation: 20; }
+
+.sd51 { --sec_rotation: 21; }
+.sd52 { --sec_rotation: 22; }
+.sd53 { --sec_rotation: 23; }
+.sd54 { --sec_rotation: 24; }
+.bd5 { --sec_rotation: 25; }
+
+.sd61 { --sec_rotation: 26; }
+.sd62 { --sec_rotation: 27; }
+.sd63 { --sec_rotation: 28; }
+.sd64 { --sec_rotation: 29; }
+.bd6 { --sec_rotation: 30; }
+
+.sd71 { --sec_rotation: 31; }
+.sd72 { --sec_rotation: 32; }
+.sd73 { --sec_rotation: 33; }
+.sd74 { --sec_rotation: 34; }
+.bd7 { --sec_rotation: 35; }
+
+.sd81 { --sec_rotation: 36; }
+.sd82 { --sec_rotation: 37; }
+.sd83 { --sec_rotation: 38; }
+.sd84 { --sec_rotation: 39; }
+.bd8 { --sec_rotation: 40; }
+
+.sd91 { --sec_rotation: 41; }
+.sd92 { --sec_rotation: 42; }
+.sd93 { --sec_rotation: 43; }
+.sd94 { --sec_rotation: 44; }
+.bd9 { --sec_rotation: 45; }
+
+.sd101 { --sec_rotation: 46; }
+.sd102 { --sec_rotation: 47; }
+.sd103 { --sec_rotation: 48; }
+.sd104 { --sec_rotation: 49; }
+.bd10 { --sec_rotation: 50; }
+
+.sd111 { --sec_rotation: 51; }
+.sd112 { --sec_rotation: 52; }
+.sd113 { --sec_rotation: 53; }
+.sd114 { --sec_rotation: 54; }
+.bd11 { --sec_rotation: 55; }
+
+.sd121 { --sec_rotation: 56; }
+.sd122 { --sec_rotation: 57; }
+.sd123 { --sec_rotation: 58; }
+.sd124 { --sec_rotation: 59; }
+.bd12 { --sec_rotation: 60; }
+
+/* POSITIONS CLOCK HANDS ON CLOCK */
 
 .hand {
     --hand_rotation: 0;
@@ -153,41 +228,139 @@ header {
     bottom: 50%;
     left: 50%;
     transform: translateX(-50%) rotate(calc(var(--hand_rotation) * 1deg));
-    border: 1px solid white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     transform-origin: bottom;
 }
 
-.hour-hand {
-    height: 35%;
-    width: 10px;
+/*  ================================================================================
+                            THEME-SPECIFIC CLOCK SETTINGS
+    ================================================================================ */
+
+.clock {
+    background: rgba(255, 255, 255, 1.0);
+    height: 80vw;
+    width: 80vw;
+    max-width: 700px;
+    max-height: 700px;
+    pointer-events: none;
+    border: 20px solid white;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 
+                        0 15px 20px rgba(0, 0, 0, 0.2), 
+                        0 0 0 4px rgba(255, 255, 255, 1.0);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden; /* fixes horizontal overflow on mobile */
+}
+
+/* CIRCLE IN CLOCK'S CENTER */
+
+.clock::after { /* ::after pseudo-element renders circle atop clock hands */
+    content: '';
+    background-color: var(--second-hand-red);
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* PADDING (and display) SETTINGS FOR NUMBERS AND DASHES */
+
+.num-box {
+    color: var(--logo-grey);
+    padding: 3%;
+    font-size: 2em;
+}
+
+.dash {
+    padding: 17%;
+}
+
+/* SPECIFIC DASH DESIGN SETTINGS */
+
+.sdash {
+    background-color: var(--minute-hand-grey);
+    height: 7px;
+    width: 1px;
+}
+
+.bdash {
     background-color: var(--hour-hand-grey);
+    height: 13px;
+    width: 2px;
+}
+
+/* SPECIFIC HAND SETTINGS */
+
+.hour-hand {
+    height: 25%;
+    width: 10px;
+    z-index: 1;
+    border: 1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--logo-grey);
 }
 
 .minute-hand {
-    height: 40%;
+    height: 35%;
     width: 7px;
-    background-color: var(--minute-hand-grey);
+    z-index: 2;
+    border: 1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--clock-center-grey);
 }
 
 .second-hand {
-    height: 45%;
-    width: 3px;
-    background-color: var(--second-hand-red);
+    height: 33%;
+    width: 1.5px;
+    z-index: 3;
+    /* outline: solid white 1px; */
+    background-color: var(--logo-red);
 }
 
-/* FOOTER */
+.second-hand::before {
+    position: absolute;
+    content: '';
+    top: 110%;
+    left: -100%;
+    height: 40px;
+    width: 5px;
+    border-radius: 3px;
+    background-color: var(--logo-red);
+}
+
+.second-hand::after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    height: 11%;
+    width: 1.5px;
+    background-color: var(--logo-red);
+}
+
+
+/*  ================================================================================
+                                        FOOTER
+    ================================================================================ */
 
 footer {
     grid-area: footer;
     grid-row-start: 3;
     grid-row-end: 4;
-    /* background-color: rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--logo-grey);
+    font-size: 0.8em;
 }
+
+/*  ================================================================================
+                                    MEDIA QUERIES
+    ================================================================================ */
 
 @media screen and (min-width: 850px) {
     .container {
@@ -196,25 +369,37 @@ footer {
 
     .tagline {
         display: inline;
+        font-family: 'Amatic SC', sans-serif;
         color: var(--logo-grey);
         text-transform: uppercase;
         text-decoration: none;
-        font-size: 1.4em;
+        letter-spacing: 0.1em;
+        font-size: 2em;
     }
 
     .clock {
-        height: 430px;
-        width: 430px;
+        border: 30px solid white;
     }
+
+    .num-box {
+        font-size: 3em;
+    }
+
+    .dash {
+        padding: 15%;
+    }
+
 }
 
 @media screen and (min-width: 1600px) {
     .container {
         width: 80%;
     }
+}
 
-    .clock {
-        height: 450px;
-        width: 450px;
-    }
+/* FOUC FIX */
+
+html {
+    visibility: visible; 
+    opacity: 1;
 }

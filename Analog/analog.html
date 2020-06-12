@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>html{visibility: hidden; opacity: 0;}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="analog.css">
@@ -13,10 +14,10 @@
             <div class="container header"> 
                 <!-- class="container (element)" specifies element styles
                      within a container without affecting other container elements -->
-                <div class="logo-box"> <!-- logo -->
-                    <a href="#" target="_blank">
-                        <img class="logo" src="../logo/logo_clockapp.svg" alt="">
-                        <h1>Clock<span>APP</span></h1>
+                <div> <!-- logo -->
+                    <a href="#" target="_blank" class="logo-box">
+                        <img class="logo-img" src="../logo/logo_clockapp.svg" alt="">
+                        <h1 class="logo-text">Clock<span>APP</span></h1>
                     </a>
                 </div>
                 <div> <!-- tagline-->
@@ -30,24 +31,95 @@
         <!-- Analog Clock -->
         <div class="container content">
             <div class="clock">
-                <!-- Clock Hands-->
+                <!-- Clock Hands -->
                 <div class="hand hour-hand"></div>
                 <div class="hand minute-hand"></div>
                 <div class="hand second-hand"></div>
 
-                <!-- Clock Numbers -->
-                <div class="number hour1"> <div class="num">1</div> </div> 
-                <div class="number hour2"> <div class="num">2</div> </div> 
-                <div class="number hour3"> <div class="num">3</div> </div> 
-                <div class="number hour4"> <div class="num">4</div> </div>
-                <div class="number hour5"> <div class="num">5</div> </div>
-                <div class="number hour6"> <div class="num">6</div> </div>
-                <div class="number hour7"> <div class="num">7</div> </div> 
-                <div class="number hour8"> <div class="num">8</div> </div> 
-                <div class="number hour9"> <div class="num">9</div> </div>
-                <div class="number hour10"> <div class="num">10</div> </div> 
-                <div class="number hour11"> <div class="num">11</div> </div>
-                <div class="number hour12"> <div class="num">12</div> </div>
+                <!-- Clock Numbers and Dashes -->
+                <div class="num-box hour1"> <div class="num">1</div> </div>
+                <div class="dash bd1"> <div class="bdash"></div> </div> 
+                <div class="dash sd11"> <div class="sdash"></div> </div> 
+                <div class="dash sd12"> <div class="sdash"></div> </div>
+                <div class="dash sd13"> <div class="sdash"></div> </div> 
+                <div class="dash sd14"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour2"> <div class="num">2</div> </div>
+                <div class="dash bd2"> <div class="bdash"></div> </div> 
+                <div class="dash sd21"> <div class="sdash"></div> </div> 
+                <div class="dash sd22"> <div class="sdash"></div> </div>
+                <div class="dash sd23"> <div class="sdash"></div> </div> 
+                <div class="dash sd24"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour3"> <div class="num">3</div> </div> 
+                <div class="dash bd3"> <div class="bdash"></div> </div>
+                <div class="dash sd31"> <div class="sdash"></div> </div> 
+                <div class="dash sd32"> <div class="sdash"></div> </div>
+                <div class="dash sd33"> <div class="sdash"></div> </div> 
+                <div class="dash sd34"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour4"> <div class="num">4</div> </div>
+                <div class="dash bd4"> <div class="bdash"></div> </div>
+                <div class="dash sd41"> <div class="sdash"></div> </div> 
+                <div class="dash sd42"> <div class="sdash"></div> </div>
+                <div class="dash sd43"> <div class="sdash"></div> </div> 
+                <div class="dash sd44"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour5"> <div class="num">5</div> </div>
+                <div class="dash bd5"> <div class="bdash"></div> </div>
+                <div class="dash sd51"> <div class="sdash"></div> </div> 
+                <div class="dash sd52"> <div class="sdash"></div> </div>
+                <div class="dash sd53"> <div class="sdash"></div> </div> 
+                <div class="dash sd54"> <div class="sdash"></div> </div>  
+                
+                <div class="num-box hour6"> <div class="num">6</div> </div>
+                <div class="dash bd6"> <div class="bdash"></div> </div>
+                <div class="dash sd61"> <div class="sdash"></div> </div> 
+                <div class="dash sd62"> <div class="sdash"></div> </div>
+                <div class="dash sd63"> <div class="sdash"></div> </div> 
+                <div class="dash sd64"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour7"> <div class="num">7</div> </div> 
+                <div class="dash bd7"> <div class="bdash"></div> </div>
+                <div class="dash sd71"> <div class="sdash"></div> </div> 
+                <div class="dash sd72"> <div class="sdash"></div> </div>
+                <div class="dash sd73"> <div class="sdash"></div> </div> 
+                <div class="dash sd74"> <div class="sdash"></div> </div>  
+                
+                <div class="num-box hour8"> <div class="num">8</div> </div> 
+                <div class="dash bd8"> <div class="bdash"></div> </div>
+                <div class="dash sd81"> <div class="sdash"></div> </div> 
+                <div class="dash sd82"> <div class="sdash"></div> </div>
+                <div class="dash sd83"> <div class="sdash"></div> </div> 
+                <div class="dash sd84"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour9"> <div class="num">9</div> </div>
+                <div class="dash bd9"> <div class="bdash"></div> </div>
+                <div class="dash sd91"> <div class="sdash"></div> </div> 
+                <div class="dash sd92"> <div class="sdash"></div> </div>
+                <div class="dash sd93"> <div class="sdash"></div> </div> 
+                <div class="dash sd94"> <div class="sdash"></div> </div> 
+                
+                <div class="num-box hour10"> <div class="num">10</div> </div> 
+                <div class="dash bd10"> <div class="bdash"></div> </div>
+                <div class="dash sd101"> <div class="sdash"></div> </div> 
+                <div class="dash sd102"> <div class="sdash"></div> </div>
+                <div class="dash sd103"> <div class="sdash"></div> </div> 
+                <div class="dash sd104"> <div class="sdash"></div> </div>  
+                
+                <div class="num-box hour11"> <div class="num">11</div> </div>
+                <div class="dash bd11"> <div class="bdash"></div> </div>
+                <div class="dash sd111"> <div class="sdash"></div> </div> 
+                <div class="dash sd112"> <div class="sdash"></div> </div>
+                <div class="dash sd113"> <div class="sdash"></div> </div> 
+                <div class="dash sd114"> <div class="sdash"></div> </div> 
+
+                <div class="num-box hour12"> <div class="num">12</div> </div>
+                <div class="dash bd12"> <div class="bdash"></div> </div>
+                <div class="dash sd121"> <div class="sdash"></div> </div> 
+                <div class="dash sd122"> <div class="sdash"></div> </div>
+                <div class="dash sd123"> <div class="sdash"></div> </div> 
+                <div class="dash sd124"> <div class="sdash"></div> </div> 
             </div>
         </div>
 

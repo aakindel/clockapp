@@ -237,12 +237,12 @@ header {
 
 .clock {
     background: rgba(255, 255, 255, 1.0);
-    height: 80vw;
-    width: 80vw;
+    height: 80vmin;
+    width: 80vmin;
     max-width: 700px;
     max-height: 700px;
     pointer-events: none;
-    border: 20px solid white;
+    border: 4.8vmin solid white;
     box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 
                         0 15px 20px rgba(0, 0, 0, 0.2), 
                         0 0 0 4px rgba(255, 255, 255, 1.0);
@@ -256,8 +256,8 @@ header {
 .clock::after { /* ::after pseudo-element renders circle atop clock hands */
     content: '';
     background-color: var(--second-hand-red);
-    height: 12px;
-    width: 12px;
+    height: 3.3%;
+    width: 3.3%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -271,24 +271,24 @@ header {
 .num-box {
     color: var(--logo-grey);
     padding: 3%;
-    font-size: 2em;
+    font-size: 6vmin;
 }
 
 .dash {
-    padding: 17%;
+    padding: 11.8vmin;
 }
 
 /* SPECIFIC DASH DESIGN SETTINGS */
 
 .sdash {
     background-color: var(--minute-hand-grey);
-    height: 7px;
+    height: 2%;
     width: 1px;
 }
 
 .bdash {
     background-color: var(--hour-hand-grey);
-    height: 13px;
+    height: 4%;
     width: 2px;
 }
 
@@ -296,7 +296,7 @@ header {
 
 .hour-hand {
     height: 25%;
-    width: 10px;
+    width: 2.7%;
     z-index: 1;
     border: 1px solid white;
     border-top-left-radius: 10px;
@@ -306,7 +306,7 @@ header {
 
 .minute-hand {
     height: 35%;
-    width: 7px;
+    width: 2%;
     z-index: 2;
     border: 1px solid white;
     border-top-left-radius: 10px;
@@ -326,9 +326,9 @@ header {
     position: absolute;
     content: '';
     top: 110%;
-    left: -100%;
-    height: 40px;
-    width: 5px;
+    left: -300%;
+    height: 25%;
+    width: 600%;
     border-radius: 3px;
     background-color: var(--logo-red);
 }
@@ -382,7 +382,7 @@ footer {
     }
 
     .num-box {
-        font-size: 3em;
+        font-size: 300%;
     }
 
     .dash {

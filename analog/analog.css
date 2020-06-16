@@ -8,13 +8,15 @@
 }
 
 :root {
+    --white: hsla(0, 0%, 100%, 1.0);
     --bg-pale-pink: hsla(0, 100%, 80%, 0.281);
     --logo-red: hsl(0, 100%, 66.7%);
     --logo-grey: hsl(0, 0%, 31.8%);
+    --hand-grey: hsl(0, 0%, 11.8%);
     --clock-center-grey: hsl(0, 0%, 38.6%);
-    --hour-hand-grey: hsl(0, 0%, 50.2%);
-    --minute-hand-grey: hsl(0, 0%, 68.6%);
-    --second-hand-red: hsl(0, 100%, 50%);
+    --bdash-grey: hsl(0, 0%, 50.2%);
+    --sdash-grey: hsl(0, 0%, 68.6%);
+    --border-grey: hsl(0, 0%, 90.2%);
 }
 
 .site-wrap {
@@ -61,13 +63,14 @@ header {
 }
 
 .logo-img {
-    height: 60px; 
-    width: 60px;
+    height: 58px; 
+    width: 58px;
 }
 
-.logo-text { /* for 'CLOCK' text */
+.logo-text { /* for 'CLOCKAPP' text */
     margin-top: 5px;
     padding-left: 3px;
+    font-size: 190%;
 }
 
 .logo-text span { /* for 'APP' text */
@@ -92,7 +95,6 @@ header {
     grid-row-start: 1;
     grid-row-end: 3;
     height: 100vh;
-    /* background-color: rgba(255, 255, 255, 0.63); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,16 +238,16 @@ header {
     ================================================================================ */
 
 .clock {
-    background: rgba(255, 255, 255, 1.0);
-    height: 80vmin;
-    width: 80vmin;
+    background: var(--white);
+    height: 75vmin;
+    width: 75vmin;
     max-width: 700px;
     max-height: 700px;
     pointer-events: none;
-    border: 4.8vmin solid white;
+    border: 4.8vmin solid var(--white);
     box-shadow: inset 0 0 5vmin rgba(0, 0, 0, 0.1), 
                         0 2.8vmin 3vmin rgba(0, 0, 0, 0.2), 
-                        0 0 0 0.4vmin rgba(255, 255, 255, 1.0);
+                        0 0 0 0.4vmin var(--white);
     border-radius: 50%;
     position: relative;
     overflow: hidden; /* fixes horizontal overflow on mobile */
@@ -255,9 +257,10 @@ header {
 
 .clock::after { /* ::after pseudo-element renders circle atop clock hands */
     content: '';
-    background-color: var(--second-hand-red);
-    height: 3.3%;
-    width: 3.3%;
+    background-color: var(--border-grey);
+    border: 0.5vmin solid var(--clock-center-grey);
+    height: 2.3%;
+    width: 2.3%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -281,13 +284,13 @@ header {
 /* SPECIFIC DASH DESIGN SETTINGS */
 
 .sdash {
-    background-color: var(--minute-hand-grey);
+    background-color: var(--sdash-grey);
     height: 2%;
     width: 0.2%;
 }
 
 .bdash {
-    background-color: var(--hour-hand-grey);
+    background-color: var(--bdash-grey);
     height: 4%;
     width: 0.5%;
 }
@@ -296,30 +299,28 @@ header {
 
 .hour-hand {
     height: 25%;
-    width: 2.7%;
+    width: 2.5%;
     z-index: 1;
-    border: 0.05vmin solid white;
-    border-top-left-radius: 1vmin;
-    border-top-right-radius: 1vmin;
-    background-color: var(--logo-grey);
+    border: 0.05vmin solid var(--border-grey);
+    box-shadow: 0.0vmin 0.5vmin 0.6vmin var(--sdash-grey);
+    background-color: var(--hand-grey);
 }
 
 .minute-hand {
     height: 33.5%;
     width: 2%;
     z-index: 2;
-    border: 0.05vmin solid white;
-    border-top-left-radius: 1vmin;
-    border-top-right-radius: 1vmin;
-    background-color: var(--clock-center-grey);
+    border: 0.05vmin solid var(--border-grey);
+    box-shadow: 0.0vmin 0.5vmin 0.6vmin var(--sdash-grey);
+    background-color: var(--hand-grey);
 }
 
 .second-hand {
     height: 33%;
     width: 0.25%;
     z-index: 3;
-    /* outline: solid white 1px; */
-    background-color: var(--logo-red);
+    box-shadow: 0.0vmin 0.5vmin 0.4vmin var(--sdash-grey);
+    background-color: var(--clock-center-grey);
 }
 
 .second-hand::before {
@@ -330,7 +331,7 @@ header {
     height: 25%;
     width: 600%;
     border-radius: 3px;
-    background-color: var(--logo-red);
+    background-color: var(--clock-center-grey);
 }
 
 .second-hand::after {
@@ -339,7 +340,7 @@ header {
     top: 100%;
     height: 11%;
     width: 100%;
-    background-color: var(--logo-red);
+    background-color: var(--clock-center-grey);
 }
 
 
@@ -367,6 +368,15 @@ footer {
         width: 90%;
     }
 
+    .logo-img {
+        height: 60px; 
+        width: 60px;
+    }
+    
+    .logo-text {
+        font-size: 200%;
+    }
+
     .tagline {
         display: inline;
         font-family: 'Amatic SC', sans-serif;
@@ -376,7 +386,6 @@ footer {
         letter-spacing: 0.1em;
         font-size: 2em; /* 4.1vmin */
     }
-
 }
 
 @media screen and (min-width: 2400px) {
@@ -385,7 +394,11 @@ footer {
     }
 
     .clock {
-        border: 40px solid white;
+        border: 40px solid var(--white);
+    }
+
+    .clock::after {
+        border: 6px solid var(--clock-center-grey);
     }
 
     .num-box {

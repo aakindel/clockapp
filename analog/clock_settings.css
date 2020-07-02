@@ -1,0 +1,237 @@
+/*  ================================================================================
+                    GENERAL CLOCK SETTINGS (stuff that shouldn't change)
+    ================================================================================ */
+
+/* PREPARES NUMBERS FOR POSITIONING ON CLOCK */
+
+.num-box {
+    --hour_rotation: 0;
+    position: absolute; /* within the relatively positioned clock */
+    pointer-events: none; /* makes numbers (except 1 on double-click?) unselectable */
+    margin-top: 0.5%; /* nudges numbers on clock towards center*/
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    transform: rotate(calc(var(--hour_rotation) * 30deg));
+}
+
+/* POSITIONS NUMBERS ON CLOCK */
+
+.hour1 { --hour_rotation: 1;}
+.hour2 { --hour_rotation: 2;}
+.hour3 { --hour_rotation: 3;}
+.hour4 { --hour_rotation: 4;}
+.hour5 { --hour_rotation: 5;}
+.hour6 { --hour_rotation: 6;}
+.hour7 { --hour_rotation: 7;}
+.hour8 { --hour_rotation: 8;}
+.hour9 { --hour_rotation: 9;}
+.hour10 { --hour_rotation: 10;}
+.hour11 { --hour_rotation: 11;}
+.hour12 { --hour_rotation: 12;}
+
+.num { /* undoes rotation on numbers to position numbers upright on clock */
+    transform: rotate(calc(var(--hour_rotation) * -30deg));
+}
+
+/* PREPARES DASHES FOR POSITIONING ON CLOCK */
+
+.dash {
+    --sec_rotation: 0;
+    position: absolute; /* within the relatively positioned clock */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: rotate(calc(var(--sec_rotation) * 6deg));
+}
+
+/* POSITIONS DASHES ON CLOCK */
+
+.sd11 { --sec_rotation: 1; }
+.sd12 { --sec_rotation: 2; }
+.sd13 { --sec_rotation: 3; }
+.sd14 { --sec_rotation: 4; }
+.bd1 { --sec_rotation: 5; }
+
+.sd21 { --sec_rotation: 6; }
+.sd22 { --sec_rotation: 7; }
+.sd23 { --sec_rotation: 8; }
+.sd24 { --sec_rotation: 9; }
+.bd2 { --sec_rotation: 10; }
+
+.sd31 { --sec_rotation: 11; }
+.sd32 { --sec_rotation: 12; }
+.sd33 { --sec_rotation: 13; }
+.sd34 { --sec_rotation: 14; }
+.bd3 { --sec_rotation: 15; }
+
+.sd41 { --sec_rotation: 16; }
+.sd42 { --sec_rotation: 17; }
+.sd43 { --sec_rotation: 18; }
+.sd44 { --sec_rotation: 19; }
+.bd4 { --sec_rotation: 20; }
+
+.sd51 { --sec_rotation: 21; }
+.sd52 { --sec_rotation: 22; }
+.sd53 { --sec_rotation: 23; }
+.sd54 { --sec_rotation: 24; }
+.bd5 { --sec_rotation: 25; }
+
+.sd61 { --sec_rotation: 26; }
+.sd62 { --sec_rotation: 27; }
+.sd63 { --sec_rotation: 28; }
+.sd64 { --sec_rotation: 29; }
+.bd6 { --sec_rotation: 30; }
+
+.sd71 { --sec_rotation: 31; }
+.sd72 { --sec_rotation: 32; }
+.sd73 { --sec_rotation: 33; }
+.sd74 { --sec_rotation: 34; }
+.bd7 { --sec_rotation: 35; }
+
+.sd81 { --sec_rotation: 36; }
+.sd82 { --sec_rotation: 37; }
+.sd83 { --sec_rotation: 38; }
+.sd84 { --sec_rotation: 39; }
+.bd8 { --sec_rotation: 40; }
+
+.sd91 { --sec_rotation: 41; }
+.sd92 { --sec_rotation: 42; }
+.sd93 { --sec_rotation: 43; }
+.sd94 { --sec_rotation: 44; }
+.bd9 { --sec_rotation: 45; }
+
+.sd101 { --sec_rotation: 46; }
+.sd102 { --sec_rotation: 47; }
+.sd103 { --sec_rotation: 48; }
+.sd104 { --sec_rotation: 49; }
+.bd10 { --sec_rotation: 50; }
+
+.sd111 { --sec_rotation: 51; }
+.sd112 { --sec_rotation: 52; }
+.sd113 { --sec_rotation: 53; }
+.sd114 { --sec_rotation: 54; }
+.bd11 { --sec_rotation: 55; }
+
+.sd121 { --sec_rotation: 56; }
+.sd122 { --sec_rotation: 57; }
+.sd123 { --sec_rotation: 58; }
+.sd124 { --sec_rotation: 59; }
+.bd12 { --sec_rotation: 60; }
+
+/* POSITIONS CLOCK HANDS ON CLOCK */
+
+.hand {
+    --hand_rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) rotate(calc(var(--hand_rotation) * 1deg));
+    transform-origin: bottom;
+}
+
+/*  ================================================================================
+                            THEME-SPECIFIC CLOCK SETTINGS
+    ================================================================================ */
+
+/*  ========== CLOCK DASHES
+    ================================ */
+
+
+/*  ===== NUM NO-BIG-DASH NO-SMALL-DASH ====== */
+
+.num_nobdash_nosdash .num-box {
+    color: var(--logo-grey);
+    padding: 3%;
+    font-size: 6vmin;
+}
+
+.num_nobdash_nosdash .dash { padding: 17%; }
+.num_nobdash_nosdash .sdash { display: none; }
+.num_nobdash_nosdash .bdash { display: none; }
+
+
+/*  ===== NO-NUM BIG-DASH NO-SMALL-DASH ====== */
+
+.nonum_bdash_nosdash .bdash {
+    background-color: var(--bdash-grey);
+    height: 8%;
+    width: 0.5%;
+}
+
+.nonum_bdash_nosdash .num-box { display: none; }
+.nonum_bdash_nosdash .dash { padding: 3%; }
+.nonum_bdash_nosdash .sdash { display: none; }
+
+
+/*  ===== NO-NUM BIG-DASH SMALL-DASH ====== */
+
+.nonum_bdash_sdash .bdash {
+    background-color: var(--bdash-grey);
+    height: 6%;
+    width: 0.5%;
+}
+
+.nonum_bdash_sdash .sdash {
+    background-color: var(--sdash-grey);
+    height: 2%;
+    width: 0.2%;
+}
+
+.nonum_bdash_sdash .num-box { display: none; }
+.nonum_bdash_sdash .dash { padding: 3%; }
+
+
+/*  ===== NUM INNER-BIG-DASH INNER-SMALL-DASH ====== */
+
+.num_innerbdash_innersdash .num-box {
+    color: var(--logo-grey);
+    padding: 3%;
+    font-size: 6vmin;
+}
+
+.num_innerbdash_innersdash .dash {
+    padding: 17%;
+}
+
+.num_innerbdash_innersdash .sdash {
+    background-color: var(--sdash-grey);
+    height: 2%;
+    width: 0.2%;
+}
+
+.num_innerbdash_innersdash .bdash {
+    background-color: var(--bdash-grey);
+    height: 4%;
+    width: 0.5%;
+}
+
+
+/*  ===== NUM OUTER-BIG-DASH OUTER-SMALL-DASH ====== */
+
+/* needs more responsive adjustments with media queries */
+
+.num_outerbdash_outersdash .num-box {
+    color: var(--logo-grey);
+    padding: 8%;
+    font-size: 4vmin;
+}
+
+.num_outerbdash_outersdash .dash {
+    padding: 3%;
+}
+
+.num_outerbdash_outersdash .sdash {
+    background-color: var(--sdash-grey);
+    height: 2%;
+    width: 0.2%;
+}
+
+.num_outerbdash_outersdash .bdash {
+    background-color: var(--bdash-grey);
+    height: 4%;
+    width: 0.5%;
+}
+
+
